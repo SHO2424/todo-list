@@ -1,0 +1,200 @@
+@use "mixin" as *;
+body {
+margin: 0;
+}
+h1 {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+    font-size: 20px;
+    
+}
+ul {
+    padding: 0;
+}
+button {
+    background: white;
+    border: 1px solid ;
+    border-radius: 10px;
+}
+.cover {
+background: black;
+}
+.item1 {
+background: #98FB98;
+}
+.item2 {
+    background: #B0E0E6;
+}
+.item3 {
+    background: #FFAD90;
+}
+header {
+    background-color: #48D1CC;
+    display: flex;
+    justify-content: center;
+}
+.header  {
+    height: 120px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen  and  (max-width:599px){
+        height: 160px;
+        width: 100%;
+    }
+    &_title {
+      color: white;
+      font-family: 'Kameron', serif;
+      font-size: 35px;
+      @media screen and (max-width:599px){
+          font-size: 25px;
+      }
+      & > .text-animate {
+       & > .char { 
+            opacity: 0;
+            display: inline-block;
+            transition: all 1.9s;
+            @include animation(
+                $name:kf-text-animate,
+                $duration:0.7s
+            );
+            @for $i from 1 through 20{
+                &:nth-child(#{$i}) {
+                    animation-delay: $i * 0.09s;
+                }
+            };
+        }
+
+            &.anime {
+                & > .char {
+                    opacity: 0;
+                    display: inline-block;
+                    transition: all 1.9s;
+                    @include animation(
+                        $name:kf-text-animate2,
+                        $duration:0.7s
+                    );
+                    @for $i from 1 through 20{
+                        &:nth-child(#{$i}) {
+                            animation-delay: $i * 0.04s;
+                        }
+                    };
+                }
+            }
+        
+    }
+    }
+    & > .header-nav {
+        & > .nav_item {
+            color: white;
+            margin-right: 10px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+.task_add {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    & > .task_form {
+        display: flex;
+        justify-content: center;
+        @media screen  and (max-width:599px){
+            flex-direction: column;
+        }
+        
+        & > .task_input {
+            height: 2rem;
+        }
+        & > .task_btn  {
+            @media screen  and (max-width:599px){
+                width: 100px;
+                height: 30px;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+
+.main-item {
+    padding: 50px;
+    width: 70%;
+    height: 50vh;
+    border-radius: 30px;
+    background: #E0FFFF;
+    margin: 0 auto; 
+    @media screen and (max-width:599px) {
+        width: 88%;
+        padding:0px  0px 0px 10px;
+        height: 75vh;
+    }
+    & > .sub-title {
+        @media screen and (max-width:599px) {
+            padding-top: 30px;
+        }
+        & > .category {
+            display: block;
+            height: 20px;
+            width: 200px;
+            margin: 0 auto;
+            &::placeholder{
+                text-align: center;
+            }
+            
+        }
+    }
+    & > h2 {
+        margin-top: 40px;
+        @media screen and (max-width:599px) {
+            font-size: 18px;
+        }
+    }
+    
+    
+}
+.task_list  {
+    & > li {
+        transition: all 0.7s;
+        & > button {
+            margin-left: 40px;
+        }
+    }
+}
+
+.show_text {
+    transition: all 0.7s;
+}
+
+
+
+@keyframes kf-text-animate {
+    0% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+         opacity:1;
+    }
+}
+@keyframes kf-text-animate2 {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+         opacity:1;
+    }
+}
